@@ -1,0 +1,12 @@
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\SimpleWinFormsClient.exe.config
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\SimpleWinFormsClient.exe
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\SimpleWinFormsClient.pdb
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.Form1.resources
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.Properties.Resources.resources
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.csproj.GenerateResource.cache
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.csproj.CoreCompileInputs.cache
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.exe
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.pdb
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\Certificates\PublicKey.cer
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\Certificates\ClientPrivate.pfx
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.csprojAssemblyReference.cache

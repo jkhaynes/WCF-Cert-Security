@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAuthService", "SimpleAuthService\SimpleAuthService.csproj", "{D4B46FDA-2404-45D6-9FE5-2F082AB879DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4B46FDA-2404-45D6-9FE5-2F082AB879DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B46FDA-2404-45D6-9FE5-2F082AB879DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B46FDA-2404-45D6-9FE5-2F082AB879DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B46FDA-2404-45D6-9FE5-2F082AB879DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DBB48B1-900A-468D-8BAB-03D98E52B744}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\bin\Debug\SimpleWCFService.dll.config
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\bin\Debug\SimpleWCFService.dll
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\bin\Debug\SimpleWCFService.pdb
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\obj\Debug\SimpleWCFService.csproj.CoreCompileInputs.cache
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\obj\Debug\SimpleWCFService.dll
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\obj\Debug\SimpleWCFService.pdb
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWCFService\obj\Debug\SimpleWCFService.csprojAssemblyReference.cache
