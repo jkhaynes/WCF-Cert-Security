@@ -10,3 +10,8 @@ C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFor
 C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\Certificates\PublicKey.cer
 C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\Certificates\ClientPrivate.pfx
 C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.csprojAssemblyReference.cache
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\Newtonsoft.Json.dll
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\RestSharp.dll
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\Newtonsoft.Json.xml
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\bin\Debug\RestSharp.xml
+C:\SourceCode\WCFSecurityExample\WCF-Cert-Security\SimpleWCFService\SimpleWinFormsClient\obj\Debug\SimpleWinFormsClient.csproj.CopyComplete

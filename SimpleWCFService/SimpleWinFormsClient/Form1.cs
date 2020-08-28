@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,8 +24,22 @@ namespace SimpleWinFormsClient
 
         private void button1_Click(object sender, EventArgs e)
         {
+        
+
+            var client = new RestClient("https://localhost:44374");
+            var request = new RestRequest("/api/cert", Method.GET);
+            var response = client.Execute(request);
+            if (!response.IsSuccessful)
+            {
+                throw new Exception(response.ErrorMessage);
+            }
+
+            var rawData = JsonConvert.DeserializeObject<byte[]>(response.Content);
+
+            var cert = new X509Certificate2(rawData);
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            proxy.ClientCredentials.ClientCertificate.SetCertificate(StoreLocation.LocalMachine, StoreName.My, X509FindType.FindBySubjectName, "ClientCert");
+            proxy.ClientCredentials.ClientCertificate.Certificate = cert;
             this.label1.Text = proxy.GetHelloWorld();
         }
     }
