@@ -26,7 +26,7 @@ namespace SimpleWinFormsClient
         {
         
 
-            var client = new RestClient("https://localhost:44374");
+            var client = new RestClient("https://pptestsvr1.proplanner2.local/simpleauthservice");
             var request = new RestRequest("/api/cert", Method.GET);
             var response = client.Execute(request);
             if (!response.IsSuccessful)

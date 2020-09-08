@@ -5,9 +5,8 @@
       <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
         <WcfProjectProperties>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>
-          </PublishTargetLocation>
-          <PublishDeleteAllFiles>False</PublishDeleteAllFiles>
+          <PublishTargetLocation>C:\Users\jessica\Documents\SimpleWCFService\</PublishTargetLocation>
+          <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
         </WcfProjectProperties>
       </FlavorProperties>
     </VisualStudio>

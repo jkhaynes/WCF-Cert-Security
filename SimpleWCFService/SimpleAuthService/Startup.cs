@@ -25,6 +25,8 @@ namespace SimpleAuthService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Rebex.Licensing.Key = "==ArYQM5/UvLNY/1ifZuIu+DivTl6HUaC0o2Xd9fo+ieS4==";
+
             services.AddControllers();
         }
 

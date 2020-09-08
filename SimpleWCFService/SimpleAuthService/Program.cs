@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace SimpleAuthService
 {
@@ -13,6 +14,12 @@ namespace SimpleAuthService
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .WriteTo.File("C:\\temp\\log\\log-.txt")
+            .MinimumLevel.Debug()
+            .CreateLogger();
+
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -20,7 +27,8 @@ namespace SimpleAuthService
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                    .UseSerilog();
                 });
     }
 }

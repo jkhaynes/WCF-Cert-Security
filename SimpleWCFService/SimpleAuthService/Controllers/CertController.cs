@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Rebex.Security.Certificates;
+using Rebex.Security.Cryptography;
+using Rebex.Security.Cryptography.Pkcs;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,19 +14,86 @@ namespace SimpleAuthService.Controllers
     [ApiController]
     public class CertController : ControllerBase
     {
+        ILogger<CertController> _logger;
+        public CertController(ILogger<CertController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet("ping")]
+        public string GetPing()
+        {
+            return "Ping";
+        }
+
         // GET: api/<CertController>
         [HttpGet]
         public byte[] Get()
         {
-            //var path = Path.Combine(Directory.GetCurrentDirectory(), "Certificates\\ClientPrivate2.pfx");
-            //var cert = new X509Certificate2(path, "password");
-            X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+            try
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Certificates\\DevCertRootCA.pfx");
+                _logger.LogInformation("got here");
+                Certificate ca = Certificate.LoadPfx(path, "", KeySetOptions.MachineKeySet);
+                _logger.LogInformation("got here 2");
 
-            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-            var cert = collection.Find(X509FindType.FindBySubjectName, "ClientCert", true);
-            var bytes = cert.Export(X509ContentType.Pkcs12);
-            return bytes;
+                // prepare certificate info
+                var info = new CertificateInfo();
+
+                // specify certificate validity range
+                info.EffectiveDate = DateTime.Now.AddDays(-1);
+                info.ExpirationDate = info.EffectiveDate.AddYears(1);
+
+                // specify certificate subject for a client certificate
+                info.Subject = new DistinguishedName("CN=Sample Certificate");
+
+                // specify certificate usage for a client certificate
+                info.Usage = KeyUses.DigitalSignature | KeyUses.KeyEncipherment | KeyUses.DataEncipherment;
+
+                // specify certificate extended usage for a client certificate
+                info.SetExtendedUsage(ExtendedUsageOids.ClientAuthentication, ExtendedUsageOids.EmailProtection);
+
+                // sets a unique serial number
+                info.SetSerialNumber(Guid.NewGuid().ToByteArray());
+
+                // use SHA-256 signature algorithm
+                info.SignatureHashAlgorithm = HashingAlgorithmId.SHA256;
+
+                // generate a 2048-bit RSA key for the certificate
+                PrivateKeyInfo privateKey;
+                using (var alg = new AsymmetricKeyAlgorithm())
+                {
+                    alg.GenerateKey(AsymmetricKeyAlgorithmId.RSA, 2048);
+                    privateKey = alg.GetPrivateKey();
+                }
+
+                // create the certificate signed by the CA certificate
+                PublicKeyInfo publicKey = privateKey.GetPublicKey();
+                Certificate certificate = CertificateIssuer.Issue(ca, info, publicKey);
+
+                // associate the private key with the certificate
+                certificate.Associate(privateKey);
+
+                using (CertificateStore store = new CertificateStore(CertificateStoreName.My, CertificateStoreLocation.CurrentUser))
+                {
+                    store.Add(certificate);
+                }
+
+                using (CertificateStore store = new CertificateStore(CertificateStoreName.TrustedPeople, CertificateStoreLocation.CurrentUser))
+                {
+                    store.Add(certificate);
+                }
+
+                var memoryStream = new MemoryStream();
+                _logger.LogInformation("got here 3");
+                certificate.Save(memoryStream, CertificateFormat.Pfx);
+                _logger.LogInformation("got here 4");
+                return memoryStream.ToArray();
+            } catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
         }
     }
 }
