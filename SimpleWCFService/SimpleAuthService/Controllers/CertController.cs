@@ -33,9 +33,8 @@ namespace SimpleAuthService.Controllers
             try
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "Certificates\\DevCertRootCA.pfx");
-                _logger.LogInformation("got here");
+
                 Certificate ca = Certificate.LoadPfx(path, "", KeySetOptions.MachineKeySet);
-                _logger.LogInformation("got here 2");
 
                 // prepare certificate info
                 var info = new CertificateInfo();
@@ -74,20 +73,18 @@ namespace SimpleAuthService.Controllers
                 // associate the private key with the certificate
                 certificate.Associate(privateKey);
 
-                using (CertificateStore store = new CertificateStore(CertificateStoreName.My, CertificateStoreLocation.CurrentUser))
+                using (CertificateStore store = new CertificateStore(CertificateStoreName.My, CertificateStoreLocation.LocalMachine))
                 {
                     store.Add(certificate);
                 }
 
-                using (CertificateStore store = new CertificateStore(CertificateStoreName.TrustedPeople, CertificateStoreLocation.CurrentUser))
+                using (CertificateStore store = new CertificateStore(CertificateStoreName.TrustedPeople, CertificateStoreLocation.LocalMachine))
                 {
                     store.Add(certificate);
                 }
 
                 var memoryStream = new MemoryStream();
-                _logger.LogInformation("got here 3");
                 certificate.Save(memoryStream, CertificateFormat.Pfx);
-                _logger.LogInformation("got here 4");
                 return memoryStream.ToArray();
             } catch(Exception ex)
             {

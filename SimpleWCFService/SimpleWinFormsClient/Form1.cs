@@ -38,6 +38,18 @@ namespace SimpleWinFormsClient
 
             var cert = new X509Certificate2(rawData);
 
+            using (X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser))
+            {
+                store.Open(OpenFlags.ReadWrite);
+                store.Add(cert); //where cert is an X509Certificate object
+            }
+
+            using (X509Store store = new X509Store(StoreName.TrustedPeople, StoreLocation.CurrentUser))
+            {
+                store.Open(OpenFlags.ReadWrite);
+                store.Add(cert); //where cert is an X509Certificate object
+            }
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             proxy.ClientCredentials.ClientCertificate.Certificate = cert;
             this.label1.Text = proxy.GetHelloWorld();
